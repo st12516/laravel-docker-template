@@ -65,14 +65,23 @@ class TodoController extends Controller
     // public function update(Request $request, $id) // 第1引数: リクエスト情報の取得　第2引数: ルートパラメータの取得
     public function update(TodoRequest $request, $id)
     {
-    // TODO: リクエストされた値を取得
-    $inputs = $request->all();
-    // dd($inputs);
-    // TODO: 更新対象のデータを取得
-    $todo = $this->todo->find($id);
-    // TODO: 更新したい値の代入とUPDATE文の実行
-    $todo->fill($inputs)->save();
+        // TODO: リクエストされた値を取得
+        $inputs = $request->all();
+        // dd($inputs);
+        // TODO: 更新対象のデータを取得
+        $todo = $this->todo->find($id);
+        // TODO: 更新したい値の代入とUPDATE文の実行
+        $todo->fill($inputs)->save();
 
-    return redirect()->route('todo.show', $todo->id);
+        return redirect()->route('todo.show', $todo->id);
+    }
+
+    public function delete($id)
+    {
+        // dd('削除のルート実行！');
+        $todo = $this->todo->find($id);
+        $todo->delete();
+
+        return redirect()->route('todo.index');
     }
 }

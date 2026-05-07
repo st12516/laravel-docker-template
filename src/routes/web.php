@@ -27,3 +27,6 @@ Route::get('/todo/{id}/edit', 'TodoController@edit')->name('todo.edit');
 
 // 更新ボタンをクリックした際にリクエストするルート、編集対象を1件特定するため、ルートパラメータで更新するToDoのIDを受け取れる
 Route::put('/todo/{id}', 'TodoController@update')->name('todo.update');
+
+
+Route::delete('/todo/{id}', 'TodoController@delete')->name('todo.delete');
