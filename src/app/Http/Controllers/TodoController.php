@@ -13,7 +13,7 @@ class TodoController extends Controller
     {
         $this->todo = $todo;
     }
-    
+
     public function index()
     {
         // $todo = new Todo();
@@ -42,12 +42,21 @@ class TodoController extends Controller
         return redirect()->route('todo.index');
     }
 
-    public function show($id) 
+    public function show($id)
     {
         // dd($id);
         // $model = new Todo();
         $todo = $this->todo->find($id);
         // dd($todo);
         return view('todo.show', ['todo' => $todo]);
+    }
+
+    // TODO: ルートパラメータを引数に受け取る
+    public function edit($id)
+    {
+        // TODO: 編集対象のレコードの情報を持つTodoモデルのインスタンスを取得
+        $todo = $this->todo->find($id);
+        // dd($todo);
+        return view('todo.edit', ['todo' => $todo]);
     }
 }
