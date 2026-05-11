@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/todo', 'TodoController@index');
+Route::get('/todo/create', 'TodoController@create')->name('todo.create');
+
+Route::post('/todo', 'TodoController@store')->name('todo.store');
+Route::get('/todo', 'TodoController@index')->name('todo.index');
+
+Route::get('/todo/{id}', 'TodoController@show')->name('todo.show');
+
+Route::get('/todo/{id}/edit', 'TodoController@edit')->name('todo.edit');
+
+// 更新ボタンをクリックした際にリクエストするルート、編集対象を1件特定するため、ルートパラメータで更新するToDoのIDを受け取れる
+Route::put('/todo/{id}', 'TodoController@update')->name('todo.update');
+
+
+Route::delete('/todo/{id}', 'TodoController@delete')->name('todo.delete');
